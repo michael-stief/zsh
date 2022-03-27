@@ -1,0 +1,15 @@
+[submodule "grc"]
+	path = grc
+	url = https://github.com/garabik/grc
+[submodule "k"]
+	path = k
+	url = https://github.com/supercrabtree/k
+[submodule "pure"]
+	path = pure
+	url = https://github.com/sindresorhus/pure
+[submodule "zsh-autosuggestions"]
+	path = zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "zsh-syntax-highlighting"]
+	path = zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
