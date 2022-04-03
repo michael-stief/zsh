@@ -1,9 +1,6 @@
 [submodule "grc"]
 	path = grc
 	url = https://github.com/garabik/grc
-[submodule "k"]
-	path = k
-	url = https://github.com/supercrabtree/k
 [submodule "pure"]
 	path = pure
 	url = https://github.com/sindresorhus/pure
