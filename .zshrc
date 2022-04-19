@@ -7,10 +7,14 @@ alias bell='echo -en "\007\007"'
 alias dig='dig +short +noshort'
 alias grep='grep --color=auto'
 alias hg='history 1 | grep -i '
-alias ls='exa -s filename --group-directories-first'
-alias l='exa -lg --git --color-scale -s filename --group-directories-first'
-alias la='l -a'
 alias nolog='unset HISTFILE'
+alias l="k -h --no-vcs --group-directories-first"
+alias la="k -h -A --no-vcs --group-directories-first"
+if (( $+commands[exa] )); then
+  alias ls='exa -s filename --group-directories-first'
+  alias l='exa -lg --git --color-scale -s filename --group-directories-first'
+  alias la='l -a'
+fi
 
 function cheat    { curl cheat.sh/$1 }
 function rrmdir   { find ${1:-.} -depth -type d -exec rmdir '{}' + }
@@ -70,6 +74,7 @@ autoload -Uz compinit && compinit && zmodload -i zsh/complist
 autoload -Uz promptinit && promptinit && prompt pure
 
 source "$ZDOTDIR/grc/grc.zsh"
+source "$ZDOTDIR/k/k.plugin.zsh"
 source "$ZDOTDIR/pure/pure.plugin.zsh"
 source "$ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 source "$ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"

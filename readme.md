@@ -3,6 +3,7 @@
 git clone --recurse https://git.sdf.org/michael/zsh ~/.config/zsh
 cp ~/.config/zsh/.zshenv.example ~/.zshenv
 mkdir -p ~/.config/grc && cd ~/.config/grc && ln -s ../zsh/grc/{grc.conf,colourfiles/*} .
+ln -s ../.config/zsh/grc/grc{,at} ~/.bin
 chsh -s $(which zsh)
 ```
 ![Screenshot](https://michael.sdf.org/zsh.png)
