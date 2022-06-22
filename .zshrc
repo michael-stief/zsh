@@ -1,13 +1,17 @@
-export PATH=$HOME/.bin:$PATH
+export PATH=$HOME/.config/bin:$PATH
 export EXA_COLORS="uu=38;5;249:un=38;5;241:gu=38;5;245:gn=38;5;241:da=38;5;23:sn=38;5;7:sb=38;5;7:ur=38;5;3;1:uw=38;5;5;1:ux=38;5;1;1:ue=38;5;1;1:gr=38;5;249:gw=38;5;249:gx=38;5;249:tr=38;5;249:tw=38;5;249:tx=38;5;245:fi=38;5;6;1:di=38;5;6:ex=38;5;1:xa=38;5;12:*.png=38;5;4:*.jpg=38;5;4:*.gif=38;5;4"
 
 alias ..='cd ..'
 alias ...='cd ../..'
+alias dl='curl -JLORs'
 alias bell='echo -en "\007\007"'
 alias dig='dig +short +noshort'
+alias cdu='cdu.pl -idhx'
+alias gdu='grc -c ~/.config/zsh/du.grc du -shc --exclude=proc/\*/{task,fd,fdinfo} *(D)'
 alias grep='grep --color=auto'
 alias hg='history 1 | grep -i '
 alias nolog='unset HISTFILE'
+alias getkey='apt-key adv --keyserver keyserver.ubuntu.com --recv-keys'
 alias l="k -h --no-vcs --group-directories-first"
 alias la="k -h -A --no-vcs --group-directories-first"
 if (( $+commands[exa] )); then

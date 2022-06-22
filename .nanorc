@@ -19,4 +19,4 @@ set titlecolor #0cc
 
 bind ^Z suspend main
 include "~/.config/nano/syntax/*.nanorc"
-include "~/.config/nano/syntax/extra/*.nanorc"
+#include "~/.config/nano/syntax/extra/*.nanorc"
