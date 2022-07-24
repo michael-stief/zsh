@@ -1,10 +1,8 @@
-### Install [exa](https://git.sdf.org/michael/zsh/wiki/exa) and [nano](https://git.sdf.org/michael/zsh/wiki/nano)
+### Install [exa](https://the.exa.website) and [nano](https://www.nano-editor.org)
 ```
-mkdir -p ~/.config/{bin,grc,zsh}
-git clone --recurse https://git.sdf.org/michael/zsh ~/.config/zsh
-cp ~/.config/zsh/.zshenv.example ~/.zshenv
-ln -s ../zsh/grc/grc{,at} ~/.config/bin
-cd ~/.config/grc && ln -s ../zsh/grc/{grc.conf,colourfiles/*} .
-chsh -s $(which zsh)
+git clone --recurse https://git.sdf.org/michael/zsh ~/.local/share/zsh
+ln -s ../.local/share/zsh/zshrc ~/.config/.zshrc
+cp ~/.local/share/zsh/zshenv ~/.zshenv
+usermod --shell $(which zsh) $(whoami)
 ```
 ![Screenshot](https://michael.sdf.org/zsh.png)

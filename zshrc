@@ -1,5 +1,5 @@
-export PATH=$HOME/.config/bin:$PATH
 export EXA_COLORS="uu=38;5;249:un=38;5;241:gu=38;5;245:gn=38;5;241:da=38;5;23:sn=38;5;7:sb=38;5;7:ur=38;5;3;1:uw=38;5;5;1:ux=38;5;1;1:ue=38;5;1;1:gr=38;5;249:gw=38;5;249:gx=38;5;249:tr=38;5;249:tw=38;5;249:tx=38;5;245:fi=38;5;6;1:di=38;5;6:ex=38;5;1:xa=38;5;12:*.png=38;5;4:*.jpg=38;5;4:*.gif=38;5;4"
+export SCREENRC=$HOME/.config/screen/screenrc
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -7,7 +7,6 @@ alias dl='curl -JLORs'
 alias bell='echo -en "\007\007"'
 alias dig='dig +short +noshort'
 alias cdu='cdu.pl -idhx'
-alias gdu='grc -c ~/.config/zsh/du.grc du -shc --exclude=proc/\*/{task,fd,fdinfo} *(D)'
 alias grep='grep --color=auto'
 alias hg='history 1 | grep -i '
 alias nolog='unset HISTFILE'
@@ -26,11 +25,12 @@ function mcd      { mkdir -p $1 && cd $1 }
 function pw       { LC_ALL=C < /dev/urandom tr -dc A-Za-z0-9 | head -c${1:-64} }
 function precmd   { print -Pn '\e]2;%m (%~)\a\e]1;%m\a'; }
 
-HISTORY_IGNORE='(..|...|/*|./*|[ *|[[ *|7z *|\\\\*|ack *|attr *|bell|bg|borg *|cat *|cd|cd *|chmod *|chown *|cp *|curl *|dialog *|dig *|du|du *|echo *|export *|fg|find *|for |git commit *|*grep *|hexdump *|hg *|kill *|l|l *|la|la *|ln *|ls *|man *|mcd *|md5 *|md5sum *|mkdir *|mount *|mv *|nano *|nolog|nslookup *|openssl *|pidof *|ping *|popd *|pushd *|rm *|rmdir *|rmdir *|rsync *|scp *|screen *|sleep *|sysbench *|tail *|tar *|time *|timeout *|touch *|traceroute *|truncate *|umount *|unp *|watch *|wget *|which *|while *|whois *|zcat *)'
+HISTORY_IGNORE='(..|...|/*|./*|[ *|[[ *|7z *|\\\\*|ack *|attr *|bell|bg|borg *|cat *|cd|cd *|chmod *|chown *|cp *|curl *|dialog *|dig *|du|du *|echo *|export *|fg|find *|for |git commit *|*grep *|hexdump *|hg *|kill *|l|l *|la|la *|ln *|ls *|man *|mcd *|md5 *|md5sum *|mkdir *|mount *|mv *|nano *|nolog|nslookup *|openssl *|pidof *|ping *|ping6 *|popd *|pushd *|rm *|rmdir *|rmdir *|rsync *|scp *|screen *|sleep *|sysbench *|tail *|tar *|time *|timeout *|touch *|traceroute *|truncate *|umount *|unp *|watch *|wget *|which *|while *|whois *|zcat *)'
 HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
 HISTFILE=$HOME/.config/zhistory
-FPATH=$FPATH:$ZDOTDIR/pure
+PPATH=$HOME/.local/share/zsh/plugins
+FPATH=$FPATH:$PPATH/pure
 setopt histignorealldups histignorespace histreduceblanks
 setopt autocd nohup listpacked alwaystoend correct interactivecomments no_beep
 
@@ -74,14 +74,13 @@ bindkey '^[[Z'    reverse-menu-complete # shift+tab
 
 unalias run-help 2>/dev/null
 autoload -Uz run-help
-autoload -Uz compinit && compinit && zmodload -i zsh/complist
+autoload -Uz compinit && compinit -D && zmodload -i zsh/complist
 autoload -Uz promptinit && promptinit && prompt pure
 
-source "$ZDOTDIR/grc/grc.zsh"
-source "$ZDOTDIR/k/k.plugin.zsh"
-source "$ZDOTDIR/pure/pure.plugin.zsh"
-source "$ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
-source "$ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+source "$PPATH/k/k.plugin.zsh"
+source "$PPATH/pure/pure.plugin.zsh"
+source "$PPATH/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+source "$PPATH/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=024
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
