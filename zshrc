@@ -11,8 +11,9 @@ alias grep='grep --color=auto'
 alias hg='history 1 | grep -i '
 alias nolog='unset HISTFILE'
 alias getkey='apt-key adv --keyserver keyserver.ubuntu.com --recv-keys'
-alias l="k -h --no-vcs --group-directories-first"
-alias la="k -h -A --no-vcs --group-directories-first"
+alias rip='yt-dlp -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'
+alias l='k -h --no-vcs --group-directories-first'
+alias la='k -h -A --no-vcs --group-directories-first'
 if (( $+commands[exa] )); then
   alias ls='exa -s filename --group-directories-first'
   alias l='exa -lg --git --color-scale -s filename --group-directories-first'
@@ -25,7 +26,7 @@ function mcd      { mkdir -p $1 && cd $1 }
 function pw       { LC_ALL=C < /dev/urandom tr -dc A-Za-z0-9 | head -c${1:-64} }
 function precmd   { print -Pn '\e]2;%m (%~)\a\e]1;%m\a'; }
 
-HISTORY_IGNORE='(..|...|/*|./*|[ *|[[ *|7z *|\\\\*|ack *|attr *|bell|bg|borg *|cat *|cd|cd *|chmod *|chown *|cp *|curl *|dialog *|dig *|du|du *|echo *|export *|fg|find *|for |git commit *|*grep *|hexdump *|hg *|kill *|l|l *|la|la *|ln *|ls *|man *|mcd *|md5 *|md5sum *|mkdir *|mount *|mv *|nano *|nolog|nslookup *|openssl *|pidof *|ping *|ping6 *|popd *|pushd *|rm *|rmdir *|rmdir *|rsync *|scp *|screen *|sleep *|sysbench *|tail *|tar *|time *|timeout *|touch *|traceroute *|truncate *|umount *|unp *|watch *|wget *|which *|while *|whois *|zcat *)'
+HISTORY_IGNORE='(..|...|/*|./*|[ *|[[ *|7z *|\\\\*|ack *|attr *|bell|bg|borg *|cat *|cd|cd *|chmod *|chown *|cp *|curl *|dialog *|dig *|du|du *|echo *|export *|fg|find *|for |git commit *|*grep *|hexdump *|hg *|kill *|l|l *|la|la *|ln *|ls *|man *|mcd *|md5 *|md5sum *|mkdir *|mount *|mv *|nano *|nolog|nslookup *|openssl *|pidof *|ping *|ping6 *|popd *|pushd *|rip *|rm *|rmdir *|rmdir *|rsync *|scp *|screen *|sleep *|sysbench *|tail *|tar *|time *|timeout *|touch *|traceroute *|truncate *|umount *|unp *|watch *|wget *|which *|while *|whois *|zcat *)'
 HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
 HISTFILE=$HOME/.config/zhistory
@@ -71,6 +72,8 @@ zstyle ':completion:*:users'            ignored-patterns '_*' 'Guest' 'daemon' '
 
 # hotkeys
 bindkey '^[[Z'    reverse-menu-complete # shift+tab
+bindkey '^[OM'    accept-line           # fix return key over ssh
+bindkey '^[[3~'   delete-char           # fix delete key over ssh
 
 unalias run-help 2>/dev/null
 autoload -Uz run-help
@@ -85,3 +88,5 @@ source "$PPATH/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=024
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_HIGHLIGHT_STYLES[comment]=fg=245
+
+(( $+commands[fortune] && $+commands[cowsay] && $+commands[lolcat] )) && fortune -s | cowsay -f small | lolcat -r -v 1
