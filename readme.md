@@ -1,8 +1,14 @@
-### Install [exa](https://the.exa.website) and [nano](https://www.nano-editor.org)
+### Manual installation
 ```
 git clone --recurse https://git.sdf.org/michael/zsh ~/.local/share/zsh
-ln -s ../.local/share/zsh/zshrc ~/.config/.zshrc
 cp ~/.local/share/zsh/zshenv ~/.zshenv
-usermod --shell $(which zsh) $(whoami)
+mkdir -p ~/.config
+ln -s ../.local/share/zsh/zshrc ~/.config/.zshrc
 ```
+
+### Installation script
+```
+curl -s https://git.sdf.org/michael/zsh/raw/branch/master/install.sh | bash
+```
+
 ![Screenshot](https://michael.sdf.org/zsh.png)

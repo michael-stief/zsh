@@ -89,4 +89,4 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=024
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_HIGHLIGHT_STYLES[comment]=fg=245
 
-(( $+commands[fortune] && $+commands[cowsay] && $+commands[lolcat] )) && fortune -s | cowsay -f small | lolcat -r -v 1
+(( $+commands[fortune] && $+commands[cowsay] && $+commands[lolcat] )) && echo && fortune -s | cowsay -f small | lolcat -r -v 1
