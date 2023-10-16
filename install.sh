@@ -16,7 +16,7 @@ else
   success "Installation of exa git nano and zsh successfull."
 fi
 
-git clone --recurse -q https://git.sdf.org/michael/zsh "$HOME/.local/share/zsh" && success "git clone successfull." || abort "Could not clone git repository."
+git clone --recurse -q https://github.com/michael-stief/zsh "$HOME/.local/share/zsh" && success "git clone successfull." || abort "Could not clone git repository."
 cp "$HOME/.local/share/zsh/zshenv" "$HOME/.zshenv"
 mkdir -p "$HOME/.config"
 ln -fs ../.local/share/zsh/zshrc "$HOME/.config/.zshrc"
