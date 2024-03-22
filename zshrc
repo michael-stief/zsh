@@ -22,8 +22,10 @@ fi
 
 function cheat    { curl cheat.sh/$1 }
 function rrmdir   { find ${1:-.} -depth -type d -exec rmdir '{}' + }
-function mcd      { mkdir -p $1 && cd $1 }
-function pw       { LC_ALL=C < /dev/urandom tr -dc A-Za-z0-9 | head -c${1:-64} }
+function mkcd     { mkdir -p $1 && cd $1 }
+function pw1      { LC_ALL=C < /dev/urandom tr -dc A-Za-z0-9 | head -c${1:-64} }
+function pw2      { LC_ALL=C < /dev/urandom tr -dc bcdfghjkmpqrtvwxyzCDFGHJKMPQRTVWXYZ234679 | head -c${1:-64} }
+function pw3      { LC_ALL=C < /dev/urandom tr -dc CDFGHJKMPQRTVWXYZ234679 | head -c${1:-64} }
 function precmd   { print -Pn '\e]2;%m (%~)\a\e]1;%m\a'; }
 
 HISTORY_IGNORE='(..|...|/*|./*|[ *|[[ *|7z *|\\\\*|ack *|attr *|bell|bg|borg *|cat *|cd|cd *|chmod *|chown *|cp *|curl *|dialog *|dig *|du|du *|echo *|export *|fg|find *|for |git commit *|*grep *|hexdump *|hg *|kill *|l|l *|la|la *|ln *|ls *|man *|mcd *|md5 *|md5sum *|mkdir *|mount *|mv *|nano *|nolog|nslookup *|openssl *|pidof *|ping *|ping6 *|popd *|pushd *|rip *|rm *|rmdir *|rmdir *|rsync *|scp *|screen *|sleep *|sysbench *|tail *|tar *|time *|timeout *|touch *|traceroute *|truncate *|umount *|unp *|watch *|wget *|which *|while *|whois *|zcat *)'
@@ -57,7 +59,7 @@ zstyle ':completion:*:warnings'         format '%F{cyan}- no matches found -%f'
 zstyle ':prompt:pure:prompt:success'    color cyan
 
 # order and grouping
-zstyle ':completion:*'                  file all
+zstyle ':completion:*'                  file-list all
 zstyle ':completion:*'                  group-name ''
 zstyle ':completion:*'                  list-dirs-first true
 zstyle ':completion:*:*:-subscript-:*'  tag-order indexes parameters
