@@ -20,6 +20,14 @@ if (( $+commands[exa] )); then
   alias l='exa -lg --git --color-scale -s filename --group-directories-first'
   alias la='l -a'
 fi
+if (( $+commands[eza] )); then
+  alias ls='eza -s filename --group-directories-first --no-quotes'
+  alias l='eza -lg --git -s filename --group-directories-first --no-quotes'
+  alias la='l -a'
+fi
+if (( $+commands[dfc] )); then
+  alias df='dfc -mdT -t -tmpfs,devtmpfs'
+fi
 
 function cheat    { curl cheat.sh/$1 }
 function rrmdir   { find ${1:-.} -depth -type d -exec rmdir '{}' + }
